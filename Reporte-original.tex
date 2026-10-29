@@ -1,0 +1,131 @@
+\documentclass[article, 11pt]{IEEEtran}   %Document is an article, 11 pt font, and follows IEEE format
+
+%Aqui van todos los paquetes que van a utilizar para el documento
+\usepackage{hyperref}         %Uso paquete hyperref  (hiperlinks)
+\usepackage{graphicx}         %Uso paquete  graphicx  (imágenes)
+\usepackage{float}            %Uso paquete  float  (posicionar imágenes)
+\usepackage{gensymb}          %Uso paquete  gensymb  (simbolos)
+\usepackage{amsmath}          %Uso paquete  amsmath  (formulas matemáticas)
+\usepackage{tikz}             %Uso paquete  tikz  (crear gráficas)
+\usepackage{pgfplots}         %Uso paquete  pgfplots  (crear gráficas)
+\usepackage{pgfplotstable}    %Uso paquete  pgfplotstable (regresión lineal)
+\usepackage[spanish]{babel}	  %Uso paquete  babel spanish (caracteres en español)
+\usepackage{lipsum}  		  %Uso paquete  lipsum (crea dummy text)
+
+\begin{document}
+
+%TITULO DEL REPORTE
+%Las palabras inician con mayúscula excepto las preposiciones
+\title{Proyecto Final\\ Nombre del Proyecto}
+
+
+%INFORMACIÓN DEL AUTOR O AUTORES
+\author{\IEEEauthorblockN{Nombre del Autor}
+\IEEEauthorblockA{\\Universidad Galileo, Teoría de Sistemas II\\
+Guatemala, Guatemala}}
+
+
+% make the title area
+\maketitle
+
+
+
+%Resumen
+%Esta sección es un breve resumen de los aspectos más importantes del proyecto. Se incluye el objetivo del proyecto, los hallazgos más importantes y la conclusión principal.
+
+\begin{abstract}
+\lipsum[1-1]
+\end{abstract}
+
+
+%INTRODUCCIÓN
+%Esta sección incluye el objetivo del proyecto. Se deben incluir los %siguientes temas:
+% Contexto de aprendizaje -> de que trata el proyecto, incluir el background teorico, incluir las referencias!
+%El proposito del proyecto -> se incluye la hipótesis que desea probar, o la serie de preguntas que se desean contestar
+%Breve resumen de la metodología utilizada y de los resultados que esperan obtener
+
+%Link de ayuda: https://libguides.usc.edu/writingguide/introduction
+\section{Introducci\'on}
+\lipsum[1-3]
+
+
+%METODOLOGÍA
+%Incluye todos los pasos que se deben seguir para llevar a cabo el experimento. Además debe incluir la justificación de la aplicación de los procedimientos. Se debe incluir cómo se obtuvo la data, qué tipo de data es y cómo fue analizada.
+\section{Metodolog\'ia}
+\lipsum[1-2]
+
+%RESULTADOS
+%Incluye únicamente todos los resultados obtenidos del experimentos. Pueden ser presentados en forma de tabla o gráficas. Incluye pequeños parrafos en donde es explique qué es lo que se esta presentando, o a que resultado poner atención. Sin embargo, no incluyen la interpretación de estos.
+\section {Resultados}
+\lipsum[1-1]
+\subsection{Tabla de datos}
+\begin{table}[H]
+\centering
+\caption{Ejemplo de Tabla con datos}
+\label{DataTable1}
+\begin{tabular}{|c|c|}
+\hline
+X [s] & Y[m/s]  \\
+\hline
+11.7 & 37.8              \\
+17.1 & 54     \\  
+8.4 & 26.6 \\
+6.6 & 21.2 \\
+7.4 & 23.4 \\
+1.9 & 7   \\
+\hline   
+\end{tabular}
+\end{table}
+
+%EJEMPLO DE COMO UTILIZAR LOS PAQUETES PARA CREAR UNA GRAFICA
+\subsection{Gr\'aficas}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+   			title=Puntos obtenidos,	%Title of graph
+   			xlabel={x[s]},			%label the x-axis
+  			ylabel={y[m/s]},		%label the y-axis
+   			legend pos=south east,	%put slope legend in bottom right corner
+]
+			\addplot[blue, only marks] table {CircleData.dat};	%plot points from data table
+			\addplot [red] table [y={create col/linear regression={y=y}}]   %best fit line
+        {CircleData.dat};
+       
+			\addlegendentry{slope=$\pgfmathprintnumber{\pgfplotstableregressiona}$}        
+        %show slope value
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Ejemplo de gr\'afica}\label{diagram1}   %caption the graph
+\end{figure}
+
+%DISCUSIÓN 
+%Esta sección incluye la interpretación de los resultados presentados anteriormente. Se debe incluir la explicación, analisis y comparación entre lo que ya se conoce de literatura anterior y los resultados obtenidos. También  en esta sección se deben responder las preguntas propuestas en la introducción y como se prueba o rechaza la hipotesis propuesta.
+\section{Discusi\'on}
+\lipsum[1-2]
+
+%CONCLUSIÓN
+%Esta sección es un resumen de lo aprendido al final de haber desarrollado el proyecto. Es una sintesís de los resultados más importantes y de lo aprendido de la teoría y la práctica.
+\section{Conclusi\'on}
+\lipsum[1-1]
+
+%FORMATO APA
+\begin{thebibliography}{1}
+
+\bibitem{LabWrite}
+M.~Carter, E.~Weiebe, and M.~Ferzli, \emph{LabWrite}, \url{https://www.ncsu.edu/labwrite/index_labwrite.htm}, NC~State~University, 2004.
+
+\bibitem{Fullerton}
+D.~Fullerton, \emph{APlusPhysics}, \url{http://www.aplusphysics.com/courses/regents/lab_report.html}, 2016.
+
+\bibitem{Svoronos}
+T.~Svoronos, \emph{How I Will Write My Dissertation}, \url{http://teddysvoronos.com/2014/12/26/how-i-will-write-my-dissertation-3/}, 2014.
+
+\bibitem{Clarion}
+G. Clarion, \emph{Rocklin High School}, 2009.
+
+\end{thebibliography}
+
+\end{document}
+
+
